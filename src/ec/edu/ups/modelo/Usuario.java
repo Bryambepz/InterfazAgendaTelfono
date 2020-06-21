@@ -19,6 +19,7 @@ public class Usuario {
     private String apellido;
     private String correo;
     private String contraseña;
+    //Agregacion
     private List<Telefono> listaTelefonos;
 
     public Usuario() {
@@ -75,6 +76,10 @@ public class Usuario {
     }
     
     public void crearTelefono(Telefono telefono){
+        listaTelefonos.add(telefono);
+    }
+    //metodos agregacion
+    public void agregarTelefono(Telefono telefono){
         listaTelefonos.add(telefono);
     }
     
