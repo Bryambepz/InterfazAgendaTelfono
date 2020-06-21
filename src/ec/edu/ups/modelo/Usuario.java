@@ -5,6 +5,8 @@
  */
 package ec.edu.ups.modelo;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -17,7 +19,21 @@ public class Usuario {
     private String apellido;
     private String correo;
     private String contraseña;
+    private List<Telefono> listaTelefonos;
 
+    public Usuario() {
+        listaTelefonos = new ArrayList<>();
+    }
+
+    public Usuario(String cedula, String nombre, String apellido, String correo, String contraseña, List<Telefono> listaTelefonos) {
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.correo = correo;
+        this.contraseña = contraseña;
+        this.listaTelefonos = listaTelefonos;
+    }
+    
     public String getCedula() {
         return cedula;
     }
@@ -57,6 +73,11 @@ public class Usuario {
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
+    
+    public void crearTelefono(Telefono telefono){
+        listaTelefonos.add(telefono);
+    }
+    
     
     @Override
     public int hashCode() {
