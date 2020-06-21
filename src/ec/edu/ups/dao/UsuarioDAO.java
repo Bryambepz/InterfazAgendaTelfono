@@ -21,7 +21,10 @@ public class UsuarioDAO implements IDAOUsuario{
     public void crearUsuario(Usuario usuario) {
         listaUsuarios.add(usuario);
     }
-
+    
+    public void comprobarUsuario(String correo, String contraseña){
+    }
+    
     @Override
     public Usuario leerUsuarios(String cedula) {
         for (Usuario usuario : listaUsuarios) {

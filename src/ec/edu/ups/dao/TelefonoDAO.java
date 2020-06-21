@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author braya
  */
-public class TelefenoDAO implements IDAOTelefono{
+public class TelefonoDAO implements IDAOTelefono{
     private List<Telefono> listaTelefonos;
     
     @Override
