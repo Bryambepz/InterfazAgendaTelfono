@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.ups.controladorUsuario;
+package ec.edu.ups.controlador;
 
 import ec.edu.ups.dao.IDAOTelefono;
 import ec.edu.ups.modelo.Telefono;
