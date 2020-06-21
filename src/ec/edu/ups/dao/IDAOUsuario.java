@@ -5,10 +5,18 @@
  */
 package ec.edu.ups.dao;
 
+import ec.edu.ups.modelo.Usuario;
+import java.util.List;
+
 /**
  *
  * @author braya
  */
 public interface IDAOUsuario {
+    public void crearUsuario(Usuario usuario);
+    public Usuario leerUsuarios(String cedula);
+    public void actualizarUsuario(Usuario usuario);
+    public void eliminarUsuario(Usuario usuario);
+    public List<Usuario> findAll();
     
 }

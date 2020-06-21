@@ -5,10 +5,18 @@
  */
 package ec.edu.ups.dao;
 
+import ec.edu.ups.modelo.Telefono;
+import ec.edu.ups.modelo.Usuario;
+import java.util.List;
+
 /**
  *
  * @author braya
  */
 public interface IDAOTelefono {
-    
+    public void crearTelefono(Telefono telefono);
+    public Telefono leerTelefono(int codigo);
+    public void actualizarTelefono(Telefono telefono);
+    public void eliminarTelefono(Telefono telefono);
+    public List<Telefono> findAll();
 }
