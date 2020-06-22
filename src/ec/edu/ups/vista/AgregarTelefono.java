@@ -57,7 +57,7 @@ public class AgregarTelefono extends javax.swing.JInternalFrame {
     }
     
     public void iniciar(){
-        btnAgregar.setVisible(true);
+        btnAgregar.setEnabled(true);
         btnCancelar.setEnabled(false);
         btnEditar.setEnabled(false);
         btnEliminar.setEnabled(false);
@@ -195,6 +195,11 @@ public class AgregarTelefono extends javax.swing.JInternalFrame {
         });
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -358,6 +363,12 @@ public class AgregarTelefono extends javax.swing.JInternalFrame {
             iniciar();
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        limpiar();
+        iniciar();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;

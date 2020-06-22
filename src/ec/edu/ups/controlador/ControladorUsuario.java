@@ -44,8 +44,14 @@ public class ControladorUsuario {
         return usuario;
     }
     
-    public void actualizarUsuario(){
+    public void actualizarUsuario(String cedula, String nombre, String apellido, String correo, String contraseña){
+        usuario.setCedula(cedula);
+        usuario.setNombre(nombre);
+        usuario.setApellido(apellido);
+        usuario.setCorreo(correo);
+        usuario.setContraseña(contraseña);
         
+        daoUs.actualizarUsuario(usuario);
     }
     
     public void eliminarUsuario(){

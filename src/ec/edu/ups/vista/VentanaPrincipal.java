@@ -22,6 +22,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private VentanaIniciarSesion ventanaIniciar;
     private VentanaRegistrarUsuario ventanaRegistrar;
     private AgregarTelefono agregarTelefono;
+    private EditarUsuario editarUsuario;
     private UsuarioDAO usuarioDAO;
     private TelefonoDAO telefonoDAO;
     private ControladorUsuario ctrlUsuario;
@@ -46,6 +47,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ventanaIniciar = new VentanaIniciarSesion(ctrlUsuario,this);
         ventanaRegistrar = new VentanaRegistrarUsuario(ctrlUsuario);
         agregarTelefono = new AgregarTelefono(ctrlUsuario);
+        editarUsuario = new EditarUsuario(ctrlUsuario);
         //localizacion
         localizacion = Locale.getDefault();
 //        localizacion = new Locale("en", "UK");
@@ -142,6 +144,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuMenu.add(menuItemListarUs);
 
         menuItemCerrar.setText("Cerrar Sesion");
+        menuItemCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemCerrarActionPerformed(evt);
+            }
+        });
         menuMenu.add(menuItemCerrar);
 
         menuItemSalir.setMnemonic('x');
@@ -168,6 +175,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuGestionar.add(menuItemtTelefono);
 
         menuItemUsuario.setText("Usuario");
+        menuItemUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemUsuarioActionPerformed(evt);
+            }
+        });
         menuGestionar.add(menuItemUsuario);
 
         menuBar.add(menuGestionar);
@@ -238,6 +250,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         mensajes = ResourceBundle.getBundle("ec.edu.ups.idiomas.mensajes", localizacion);
         cambiarIdioma();
     }//GEN-LAST:event_menuItemInglesActionPerformed
+
+    private void menuItemCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCerrarActionPerformed
+        // TODO add your handling code here:
+        menuItemIniciarSesion.setVisible(true);
+        menuItemRegistar.setVisible(true);
+        
+    }//GEN-LAST:event_menuItemCerrarActionPerformed
+
+    private void menuItemUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUsuarioActionPerformed
+        desktopPane.add(editarUsuario);
+        editarUsuario.setVisible(true);
+    }//GEN-LAST:event_menuItemUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
