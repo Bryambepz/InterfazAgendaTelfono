@@ -38,8 +38,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ctrlUsuario = new ControladorUsuario(usuarioDAO, telefonoDAO);
         ctrlTelefono = new ControladorTelefono(telefonoDAO);
         //instanciar vistas
-        ventanaIniciar = new VentanaIniciarSesion();
-        ventanaRegistrar = new VentanaRegistrarUsuario();
+        ventanaIniciar = new VentanaIniciarSesion(ctrlUsuario,this);
+        ventanaRegistrar = new VentanaRegistrarUsuario(ctrlUsuario);
     }
 
     public JMenu getMenuAgenda() {
@@ -56,6 +56,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     public JMenuItem getMenuItemListarUs() {
         return menuItemListarUs;
+    }
+
+    public JMenuItem getMenuItemRegistar() {
+        return menuItemRegistar;
     }
     
     /**
@@ -83,6 +87,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuItemListar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
 
         menuItemIniciar.setMnemonic('f');
         menuItemIniciar.setText("Menu");

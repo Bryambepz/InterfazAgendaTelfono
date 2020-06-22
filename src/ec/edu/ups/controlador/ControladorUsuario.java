@@ -7,6 +7,8 @@ package ec.edu.ups.controlador;
 
 import ec.edu.ups.dao.IDAOTelefono;
 import ec.edu.ups.dao.IDAOUsuario;
+import ec.edu.ups.dao.TelefonoDAO;
+import ec.edu.ups.dao.UsuarioDAO;
 import ec.edu.ups.modelo.Telefono;
 import ec.edu.ups.modelo.Usuario;
 
@@ -27,8 +29,9 @@ public class ControladorUsuario {
         this.daotelf = daotelf;
     }
     
-    public void registrarUsuario(Usuario usuario){
-        this.usuario = usuario;
+    public void registrarUsuario(String cedula, String nombre, String apellido, String correo, String contraseña){
+        //this.usuario = usuario;
+        usuario = new Usuario(cedula, nombre, apellido, correo, contraseña);
         daoUs.crearUsuario(usuario);
     }
     
@@ -51,4 +54,11 @@ public class ControladorUsuario {
         daoUs.actualizarUsuario(usuario);
     }
     
+    public boolean comprobar(String contraseña, String correo){
+        if(usuario != null){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

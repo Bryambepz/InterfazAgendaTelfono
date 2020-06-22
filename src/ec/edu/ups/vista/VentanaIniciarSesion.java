@@ -6,6 +6,7 @@
 package ec.edu.ups.vista;
 
 import ec.edu.ups.controlador.ControladorUsuario;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,17 +14,20 @@ import ec.edu.ups.controlador.ControladorUsuario;
  */
 public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
     private ControladorUsuario ctrlUsuario;
+    private VentanaPrincipal ventanaPrincipal;
     /**
      * Creates new form VentanaIniciarSesion
      */
-    public VentanaIniciarSesion() {
+    public VentanaIniciarSesion(ControladorUsuario ctrlUsuario, VentanaPrincipal ventanaPrincipal) {
         initComponents();
+        this.ctrlUsuario = ctrlUsuario;
+        this.ventanaPrincipal = ventanaPrincipal;
     }
 
-//    VentanaIniciarSesion(ControladorUsuario ctrlUsuario, VentanaPrincipal aThis) {
-//        
-//    }
-
+    public void limpiar(){
+        txtCorreo.setText("");
+        txtContraseña.setText("");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,6 +50,11 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
         jLabel2.setText("Ingrese Contraseña");
 
         btnInicarSesion.setText("Iniciar Sesion");
+        btnInicarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInicarSesionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,6 +93,27 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnInicarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicarSesionActionPerformed
+        String correo = txtCorreo.getText();
+        String contraseña = txtContraseña.getText();
+        
+        if(correo.equals("") || contraseña.equals("")){
+            JOptionPane.showMessageDialog(this, "Campos incompletos");
+        }else{
+            if(ctrlUsuario.comprobar(contraseña, correo)){
+                ventanaPrincipal.getMenuItemIniciarSesion().setVisible(false);
+                ventanaPrincipal.getMenuItemRegistar().setVisible(false);
+                ventanaPrincipal.getMenuItemCerrar().setVisible(true);
+                ventanaPrincipal.getMenuAgenda().setVisible(true);
+                limpiar();
+                this.dispose();
+                JOptionPane.showMessageDialog(this, "Datos correctos");
+            }else{
+                JOptionPane.showMessageDialog(this, "Correo o contraseña Incorractos");
+            }
+        }
+    }//GEN-LAST:event_btnInicarSesionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

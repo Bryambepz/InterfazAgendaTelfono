@@ -26,13 +26,13 @@ public class Usuario {
         listaTelefonos = new ArrayList<>();
     }
 
-    public Usuario(String cedula, String nombre, String apellido, String correo, String contraseña, List<Telefono> listaTelefonos) {
+    public Usuario(String cedula, String nombre, String apellido, String correo, String contraseña) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.contraseña = contraseña;
-        this.listaTelefonos = listaTelefonos;
+        //this.listaTelefonos = listaTelefonos;
     }
     
     public String getCedula() {
