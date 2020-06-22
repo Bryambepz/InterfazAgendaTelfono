@@ -17,13 +17,16 @@ import java.util.List;
  */
 public class TelefonoDAO implements IDAOTelefono{
     private List<Telefono> listaTelefonos;
-
+    private int codigo;
+    
     public TelefonoDAO() {
         listaTelefonos = new ArrayList<>();
+        codigo = 0;
     }
     
     @Override
     public void crearTelefono(Telefono telefono) {
+        telefono.setCodigo(codigo++);
         listaTelefonos.add(telefono);
     }
 
@@ -63,5 +66,11 @@ public class TelefonoDAO implements IDAOTelefono{
     public List<Telefono> findAll() {
         return listaTelefonos;
     }
+
+    @Override
+    public int codigoTelefono(){
+        return codigo;
+    }
+    
     
 }

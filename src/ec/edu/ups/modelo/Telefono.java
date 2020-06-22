@@ -18,13 +18,20 @@ public class Telefono {
     public Telefono() {
     }
 
+    public Telefono(String numero, String tipo, String operadora) {
+        //this.codigo = codigo;
+        this.numero = numero;
+        this.tipo = tipo;
+        this.operadora = operadora;
+    }
+
     public Telefono(int codigo, String numero, String tipo, String operadora) {
         this.codigo = codigo;
         this.numero = numero;
         this.tipo = tipo;
         this.operadora = operadora;
     }
-
+    
     public int getCodigo() {
         return codigo;
     }

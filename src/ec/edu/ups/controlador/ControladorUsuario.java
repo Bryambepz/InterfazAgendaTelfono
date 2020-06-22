@@ -24,10 +24,14 @@ public class ControladorUsuario {
     //DAO
     private IDAOUsuario daoUs;
     private IDAOTelefono daotelf;
+    
+    private int contadorTelf;
 
     public ControladorUsuario(IDAOUsuario daoUs, IDAOTelefono daotelf) {
         this.daoUs = daoUs;
         this.daotelf = daotelf;
+        
+        contadorTelf = 0;
     }
     
     public void registrarUsuario(String cedula, String nombre, String apellido, String correo, String contraseña){
@@ -36,8 +40,8 @@ public class ControladorUsuario {
         daoUs.crearUsuario(usuario);
     }
     
-    public void verUsuario(){
-        
+    public Usuario verUsuario(){
+        return usuario;
     }
     
     public void actualizarUsuario(){
@@ -49,15 +53,37 @@ public class ControladorUsuario {
     }
     
     //Agregacion
-    public void agregarTelefono(int codigo, String numero, String tipo, String operadora){
-        telefono = new Telefono(codigo, numero, tipo, operadora);   
+    public void agregarTelefono(String numero, String tipo, String operadora){
+        telefono = new Telefono(numero, tipo, operadora);   
         daotelf.crearTelefono(telefono);
         usuario.agregarTelefono(telefono);
         daoUs.actualizarUsuario(usuario);
     }
     
+    public void actualizarTelefono(String numero, String tipo, String operadora, int codigo){
+        telefono = new Telefono(codigo, numero, tipo, operadora);
+        daotelf.actualizarTelefono(telefono);
+        usuario.actualizarTelefono(telefono);
+        daoUs.actualizarUsuario(usuario);
+    }
+    
+    public void eliminarTelefono(int codigo){
+        telefono = daotelf.leerTelefono(codigo);
+        if(telefono != null){
+            daotelf.eliminarTelefono(telefono);
+            usuario.eliminarTelefono(telefono);
+            daoUs.actualizarUsuario(usuario);
+            //telef
+        }
+    }
+    
     public List<Telefono> listarTelefono(){
         return usuario.getListaTelefonos();
+    }
+    
+    public int codigoTelefono(){
+        int cont = daotelf.codigoTelefono();
+        return cont++;
     }
     
     public boolean comprobar(String contraseña, String correo){

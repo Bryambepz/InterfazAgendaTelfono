@@ -14,34 +14,28 @@ import ec.edu.ups.modelo.Telefono;
  */
 public class ControladorTelefono {
     //modelo
-    //private Usuario usuario;
     private Telefono telefono;
     //DAO
-    //private IDAOUsuario daoUs;
     private IDAOTelefono daotelf;
-    private int codigo = 0;
     
     public ControladorTelefono(IDAOTelefono daotelf) {
         this.daotelf = daotelf;
     }
     
-    public void registrarTelefono(int codigo, String numero, String tipo, String operadora){
-        //this.telefono = telefono;
-        telefono = new Telefono(codigo, numero, tipo, operadora);
+//    public void registrarTelefono(String numero, String tipo, String operadora){
+//        //this.telefono = telefono;
+//        telefono = new Telefono(numero, tipo, operadora);
+//        daotelf.crearTelefono(telefono);
+//        //codigo++;
+//    }
+    
+    public void crearTelefono(Telefono telefono){
         daotelf.crearTelefono(telefono);
-        //codigo++;
     }
     
-    public void verTelefono(){
-        
-    }
-    
-    public void actualizarTelefono(){
-        
-    }
-    
-    public void eliminarTelefono(){
-        
+    public Telefono buscarTelefono(int codigo){
+        telefono = daotelf.leerTelefono(codigo);
+        return telefono;
     }
     
 }

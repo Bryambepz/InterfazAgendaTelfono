@@ -18,5 +18,6 @@ public interface IDAOTelefono {
     public Telefono leerTelefono(int codigo);
     public void actualizarTelefono(Telefono telefono);
     public void eliminarTelefono(Telefono telefono);
+    public int codigoTelefono();
     public List<Telefono> findAll();
 }

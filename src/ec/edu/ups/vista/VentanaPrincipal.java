@@ -26,9 +26,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private TelefonoDAO telefonoDAO;
     private ControladorUsuario ctrlUsuario;
     private ControladorTelefono ctrlTelefono;
-    
     private Locale localizacion;
-    private ResourceBundle mensaje;
+    private ResourceBundle mensajes;
     
     /**
      * Creates new form VentanaPrincipal
@@ -49,25 +48,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         agregarTelefono = new AgregarTelefono(ctrlUsuario);
         //localizacion
         localizacion = Locale.getDefault();
-        System.out.println("Pais " + localizacion.getCountry());
-        //System.out.println("Idiaoma " + Localizacion.getLanguage());
-        mensaje = ResourceBundle.getBundle(ec.edu.ups., localizacion);
-        cambiarIdioma();
+//        localizacion = new Locale("en", "UK");
+//        mensajes = ResourceBundle.getBundle("ec.edu.ups.idiomas.mensajes", localizacion);
+//        cambiarIdioma();
     }
     
     public void cambiarIdioma(){
-//        menuMenu.setText(mensaje.getString("menuMenu"));
-//            menuItemIniciarSesion.setText(mensaje.getString("menuItemIniciarSesion"));
-//            menuItemRegistar.setText(mensaje.getString("menuItemRegistrar"));
-//            menuItemListarUs.setText(mensaje.getString("menuItemListarUs"));
-//            menuItemCerrar.setText(mensaje.getString("menuItemCerrar"));
-//            menuItemSalir.setText(mensaje.getString("meniItemSalir"));
-//        menuGestionar.setText(mensaje.getString("menuGestionar"));
-//            menuItemtTelefono.setText(mensaje.getString("menuItemTelefono"));
-//            menuItemUsuario.setText(mensaje.getString("menuItemUsuario"));
-//        menuIdioma.setText(mensaje.getString("menuIdioma"));
-//            menuItemEspañol.setText(mensaje.getString("menuItemEspañol"));
-//            menuItemIngles.setText(mensaje.getString("menuItemIngles"));
+        menuMenu.setText(mensajes.getString("menuMenu"));
+            menuItemIniciarSesion.setText(mensajes.getString("menuItemIniciarSesion"));
+            menuItemRegistar.setText(mensajes.getString("menuItemRegistrar"));
+            menuItemListarUs.setText(mensajes.getString("menuItemListarUs"));
+            menuItemCerrar.setText(mensajes.getString("menuItemCerrar"));
+            menuItemSalir.setText(mensajes.getString("menuItemSalir"));
+        menuGestionar.setText(mensajes.getString("menuGestionar"));
+            menuItemtTelefono.setText(mensajes.getString("menuItemTelefono"));
+            menuItemUsuario.setText(mensajes.getString("menuItemUsuario"));
+        menuIdioma.setText(mensajes.getString("menuIdioma"));
+            menuItemEspañol.setText(mensajes.getString("menuItemEspañol"));
+            menuItemIngles.setText(mensajes.getString("menuItemIngles"));
     }
     
     public JMenu getMenuAgenda() {
@@ -230,15 +228,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemtTelefonoActionPerformed
 
     private void menuItemEspañolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemEspañolActionPerformed
-//        Localizacion = new Locale("es", "EC");
-//        mensajes = ResourceBundle.getBundle("ec.edu.ups.idioma.mensaje", Localizacion);
-//        cambiarIdioma();
+        localizacion = new Locale("es", "EC");
+        mensajes = ResourceBundle.getBundle("ec.edu.ups.idiomas.mensajes", localizacion);
+        cambiarIdioma();
     }//GEN-LAST:event_menuItemEspañolActionPerformed
 
     private void menuItemInglesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemInglesActionPerformed
-//        Localizacion = new Locale("en", "UK");
-//        mensajes = ResourceBundle.getBundle("ec.edu.ups.idioma.mensaje", Localizacion);
-//        cambiarIdioma();
+        localizacion = new Locale("en", "UK");
+        mensajes = ResourceBundle.getBundle("ec.edu.ups.idiomas.mensajes", localizacion);
+        cambiarIdioma();
     }//GEN-LAST:event_menuItemInglesActionPerformed
 
     /**

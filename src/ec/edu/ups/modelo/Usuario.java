@@ -80,7 +80,27 @@ public class Usuario {
     public void agregarTelefono(Telefono telefono){
         listaTelefonos.add(telefono);
     }
-
+    
+    public void actualizarTelefono(Telefono telefono){
+        for (int i = 0; i < listaTelefonos.size(); i++) {
+            Telefono telf = listaTelefonos.get(i);
+            if(telf.getCodigo() == telefono.getCodigo()){
+                listaTelefonos.set(i, telefono);
+                break;
+            }
+        }
+    }
+    
+    public void eliminarTelefono(Telefono telefono){
+        for (int i = 0; i < listaTelefonos.size(); i++) {
+            Telefono telf = listaTelefonos.get(i);
+            if(telf.getCodigo() == telefono.getCodigo()){
+                listaTelefonos.remove(listaTelefonos.get(i));
+                break;
+            }
+        }
+    }
+    
     public List<Telefono> getListaTelefonos() {
         return listaTelefonos;
     }
