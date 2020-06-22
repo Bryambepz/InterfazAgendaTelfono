@@ -32,6 +32,7 @@ public class Usuario {
         this.apellido = apellido;
         this.correo = correo;
         this.contraseña = contraseña;
+        listaTelefonos = new ArrayList<>();
         //this.listaTelefonos = listaTelefonos;
     }
     
@@ -75,9 +76,6 @@ public class Usuario {
         this.contraseña = contraseña;
     }
     
-    public void crearTelefono(Telefono telefono){
-        listaTelefonos.add(telefono);
-    }
     //metodos agregacion
     public void agregarTelefono(Telefono telefono){
         listaTelefonos.add(telefono);

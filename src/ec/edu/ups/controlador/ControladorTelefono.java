@@ -19,14 +19,17 @@ public class ControladorTelefono {
     //DAO
     //private IDAOUsuario daoUs;
     private IDAOTelefono daotelf;
-
+    private int codigo = 0;
+    
     public ControladorTelefono(IDAOTelefono daotelf) {
         this.daotelf = daotelf;
     }
     
-    public void registrarUsuario(Telefono telefono){
-        this.telefono = telefono;
+    public void registrarTelefono(int codigo, String numero, String tipo, String operadora){
+        //this.telefono = telefono;
+        telefono = new Telefono(codigo, numero, tipo, operadora);
         daotelf.crearTelefono(telefono);
+        codigo++;
     }
     
     public void verTelefono(){

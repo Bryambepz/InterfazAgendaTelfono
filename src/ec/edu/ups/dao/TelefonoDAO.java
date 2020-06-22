@@ -8,6 +8,7 @@ package ec.edu.ups.dao;
 import ec.edu.ups.dao.IDAOTelefono;
 import ec.edu.ups.modelo.Telefono;
 import ec.edu.ups.modelo.Usuario;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,6 +17,10 @@ import java.util.List;
  */
 public class TelefonoDAO implements IDAOTelefono{
     private List<Telefono> listaTelefonos;
+
+    public TelefonoDAO() {
+        listaTelefonos = new ArrayList<>();
+    }
     
     @Override
     public void crearTelefono(Telefono telefono) {

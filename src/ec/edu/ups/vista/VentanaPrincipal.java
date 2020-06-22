@@ -19,6 +19,7 @@ import javax.swing.JMenuItem;
 public class VentanaPrincipal extends javax.swing.JFrame {
     private VentanaIniciarSesion ventanaIniciar;
     private VentanaRegistrarUsuario ventanaRegistrar;
+    private AgregarTelefono agregarTelefono;
     private UsuarioDAO usuarioDAO;
     private TelefonoDAO telefonoDAO;
     private ControladorUsuario ctrlUsuario;
@@ -40,6 +41,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         //instanciar vistas
         ventanaIniciar = new VentanaIniciarSesion(ctrlUsuario,this);
         ventanaRegistrar = new VentanaRegistrarUsuario(ctrlUsuario);
+        agregarTelefono = new AgregarTelefono(ctrlUsuario);
     }
 
     public JMenu getMenuAgenda() {
@@ -81,9 +83,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuItemSalir = new javax.swing.JMenuItem();
         menuAgenda = new javax.swing.JMenu();
         menuItemAgregar = new javax.swing.JMenuItem();
-        menuItemBuscar = new javax.swing.JMenuItem();
-        menuItemActualizar = new javax.swing.JMenuItem();
-        menuItemEliminar = new javax.swing.JMenuItem();
         menuItemListar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -132,20 +131,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuAgenda.setText("Agenda");
 
         menuItemAgregar.setMnemonic('t');
-        menuItemAgregar.setText("Agregar");
+        menuItemAgregar.setText("Gestionar Agenda");
+        menuItemAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemAgregarActionPerformed(evt);
+            }
+        });
         menuAgenda.add(menuItemAgregar);
-
-        menuItemBuscar.setMnemonic('y');
-        menuItemBuscar.setText("Buscar");
-        menuAgenda.add(menuItemBuscar);
-
-        menuItemActualizar.setMnemonic('p');
-        menuItemActualizar.setText("Actualizar");
-        menuAgenda.add(menuItemActualizar);
-
-        menuItemEliminar.setMnemonic('d');
-        menuItemEliminar.setText("Eliminar");
-        menuAgenda.add(menuItemEliminar);
 
         menuItemListar.setText("Listar");
         menuAgenda.add(menuItemListar);
@@ -181,6 +173,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         desktopPane.add(ventanaRegistrar);
         ventanaRegistrar.setVisible(true);
     }//GEN-LAST:event_menuItemRegistarActionPerformed
+
+    private void menuItemAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAgregarActionPerformed
+        desktopPane.add(agregarTelefono);
+        agregarTelefono.setVisible(true);
+    }//GEN-LAST:event_menuItemAgregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -221,11 +218,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu menuAgenda;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem menuItemActualizar;
     private javax.swing.JMenuItem menuItemAgregar;
-    private javax.swing.JMenuItem menuItemBuscar;
     private javax.swing.JMenuItem menuItemCerrar;
-    private javax.swing.JMenuItem menuItemEliminar;
     private javax.swing.JMenu menuItemIniciar;
     private javax.swing.JMenuItem menuItemIniciarSesion;
     private javax.swing.JMenuItem menuItemListar;

@@ -48,8 +48,9 @@ public class ControladorUsuario {
     }
     
     //Agregacion
-    public void agregarTelefono(int codigo){
-        telefono = daotelf.leerTelefono(codigo);
+    public void agregarTelefono(int codigo, String numero, String tipo, String operadora){
+        telefono = new Telefono(codigo, numero, tipo, operadora);   
+        daotelf.crearTelefono(telefono);
         usuario.agregarTelefono(telefono);
         daoUs.actualizarUsuario(usuario);
     }
