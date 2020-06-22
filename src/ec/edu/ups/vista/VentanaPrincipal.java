@@ -9,6 +9,8 @@ import ec.edu.ups.controlador.ControladorTelefono;
 import ec.edu.ups.controlador.ControladorUsuario;
 import ec.edu.ups.dao.TelefonoDAO;
 import ec.edu.ups.dao.UsuarioDAO;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
@@ -25,13 +27,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private ControladorUsuario ctrlUsuario;
     private ControladorTelefono ctrlTelefono;
     
+    private Locale localizacion;
+    private ResourceBundle mensaje;
+    
     /**
      * Creates new form VentanaPrincipal
      */
     public VentanaPrincipal() {
         initComponents();
         menuItemCerrar.setVisible(false);
-        menuAgenda.setVisible(false);
+        menuGestionar.setVisible(false);
         //instanciar DAO's
         usuarioDAO = new UsuarioDAO();
         telefonoDAO = new TelefonoDAO();
@@ -42,10 +47,31 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ventanaIniciar = new VentanaIniciarSesion(ctrlUsuario,this);
         ventanaRegistrar = new VentanaRegistrarUsuario(ctrlUsuario);
         agregarTelefono = new AgregarTelefono(ctrlUsuario);
+        //localizacion
+        localizacion = Locale.getDefault();
+        System.out.println("Pais " + localizacion.getCountry());
+        //System.out.println("Idiaoma " + Localizacion.getLanguage());
+        mensaje = ResourceBundle.getBundle(ec.edu.ups., localizacion);
+        cambiarIdioma();
     }
-
+    
+    public void cambiarIdioma(){
+//        menuMenu.setText(mensaje.getString("menuMenu"));
+//            menuItemIniciarSesion.setText(mensaje.getString("menuItemIniciarSesion"));
+//            menuItemRegistar.setText(mensaje.getString("menuItemRegistrar"));
+//            menuItemListarUs.setText(mensaje.getString("menuItemListarUs"));
+//            menuItemCerrar.setText(mensaje.getString("menuItemCerrar"));
+//            menuItemSalir.setText(mensaje.getString("meniItemSalir"));
+//        menuGestionar.setText(mensaje.getString("menuGestionar"));
+//            menuItemtTelefono.setText(mensaje.getString("menuItemTelefono"));
+//            menuItemUsuario.setText(mensaje.getString("menuItemUsuario"));
+//        menuIdioma.setText(mensaje.getString("menuIdioma"));
+//            menuItemEspañol.setText(mensaje.getString("menuItemEspañol"));
+//            menuItemIngles.setText(mensaje.getString("menuItemIngles"));
+    }
+    
     public JMenu getMenuAgenda() {
-        return menuAgenda;
+        return menuGestionar;
     }
 
     public JMenuItem getMenuItemCerrar() {
@@ -64,6 +90,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         return menuItemRegistar;
     }
     
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -75,21 +102,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         desktopPane = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
-        menuItemIniciar = new javax.swing.JMenu();
+        menuMenu = new javax.swing.JMenu();
         menuItemIniciarSesion = new javax.swing.JMenuItem();
         menuItemRegistar = new javax.swing.JMenuItem();
         menuItemListarUs = new javax.swing.JMenuItem();
         menuItemCerrar = new javax.swing.JMenuItem();
         menuItemSalir = new javax.swing.JMenuItem();
-        menuAgenda = new javax.swing.JMenu();
-        menuItemAgregar = new javax.swing.JMenuItem();
-        menuItemListar = new javax.swing.JMenuItem();
+        menuGestionar = new javax.swing.JMenu();
+        menuItemtTelefono = new javax.swing.JMenuItem();
+        menuItemUsuario = new javax.swing.JMenuItem();
+        menuIdioma = new javax.swing.JMenu();
+        menuItemEspañol = new javax.swing.JMenuItem();
+        menuItemIngles = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
 
-        menuItemIniciar.setMnemonic('f');
-        menuItemIniciar.setText("Menu");
+        menuMenu.setMnemonic('f');
+        menuMenu.setText("Menu");
 
         menuItemIniciarSesion.setMnemonic('o');
         menuItemIniciarSesion.setText("Iniciar Sesion");
@@ -98,7 +128,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 menuItemIniciarSesionActionPerformed(evt);
             }
         });
-        menuItemIniciar.add(menuItemIniciarSesion);
+        menuMenu.add(menuItemIniciarSesion);
 
         menuItemRegistar.setMnemonic('s');
         menuItemRegistar.setText("Registrar");
@@ -107,14 +137,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 menuItemRegistarActionPerformed(evt);
             }
         });
-        menuItemIniciar.add(menuItemRegistar);
+        menuMenu.add(menuItemRegistar);
 
         menuItemListarUs.setMnemonic('a');
         menuItemListarUs.setText("Listar telefonos del usuario");
-        menuItemIniciar.add(menuItemListarUs);
+        menuMenu.add(menuItemListarUs);
 
         menuItemCerrar.setText("Cerrar Sesion");
-        menuItemIniciar.add(menuItemCerrar);
+        menuMenu.add(menuItemCerrar);
 
         menuItemSalir.setMnemonic('x');
         menuItemSalir.setText("Exit");
@@ -123,26 +153,46 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 menuItemSalirActionPerformed(evt);
             }
         });
-        menuItemIniciar.add(menuItemSalir);
+        menuMenu.add(menuItemSalir);
 
-        menuBar.add(menuItemIniciar);
+        menuBar.add(menuMenu);
 
-        menuAgenda.setMnemonic('e');
-        menuAgenda.setText("Agenda");
+        menuGestionar.setMnemonic('e');
+        menuGestionar.setText("Gestionar Agenda");
 
-        menuItemAgregar.setMnemonic('t');
-        menuItemAgregar.setText("Gestionar Agenda");
-        menuItemAgregar.addActionListener(new java.awt.event.ActionListener() {
+        menuItemtTelefono.setMnemonic('t');
+        menuItemtTelefono.setText("Tefonos");
+        menuItemtTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemAgregarActionPerformed(evt);
+                menuItemtTelefonoActionPerformed(evt);
             }
         });
-        menuAgenda.add(menuItemAgregar);
+        menuGestionar.add(menuItemtTelefono);
 
-        menuItemListar.setText("Listar");
-        menuAgenda.add(menuItemListar);
+        menuItemUsuario.setText("Usuario");
+        menuGestionar.add(menuItemUsuario);
 
-        menuBar.add(menuAgenda);
+        menuBar.add(menuGestionar);
+
+        menuIdioma.setText("Idioma");
+
+        menuItemEspañol.setText("Español");
+        menuItemEspañol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemEspañolActionPerformed(evt);
+            }
+        });
+        menuIdioma.add(menuItemEspañol);
+
+        menuItemIngles.setText("Ingles");
+        menuItemIngles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemInglesActionPerformed(evt);
+            }
+        });
+        menuIdioma.add(menuItemIngles);
+
+        menuBar.add(menuIdioma);
 
         setJMenuBar(menuBar);
 
@@ -174,10 +224,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ventanaRegistrar.setVisible(true);
     }//GEN-LAST:event_menuItemRegistarActionPerformed
 
-    private void menuItemAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAgregarActionPerformed
+    private void menuItemtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemtTelefonoActionPerformed
         desktopPane.add(agregarTelefono);
         agregarTelefono.setVisible(true);
-    }//GEN-LAST:event_menuItemAgregarActionPerformed
+    }//GEN-LAST:event_menuItemtTelefonoActionPerformed
+
+    private void menuItemEspañolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemEspañolActionPerformed
+//        Localizacion = new Locale("es", "EC");
+//        mensajes = ResourceBundle.getBundle("ec.edu.ups.idioma.mensaje", Localizacion);
+//        cambiarIdioma();
+    }//GEN-LAST:event_menuItemEspañolActionPerformed
+
+    private void menuItemInglesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemInglesActionPerformed
+//        Localizacion = new Locale("en", "UK");
+//        mensajes = ResourceBundle.getBundle("ec.edu.ups.idioma.mensaje", Localizacion);
+//        cambiarIdioma();
+    }//GEN-LAST:event_menuItemInglesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,16 +278,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenu menuAgenda;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem menuItemAgregar;
+    private javax.swing.JMenu menuGestionar;
+    private javax.swing.JMenu menuIdioma;
     private javax.swing.JMenuItem menuItemCerrar;
-    private javax.swing.JMenu menuItemIniciar;
+    private javax.swing.JMenuItem menuItemEspañol;
+    private javax.swing.JMenuItem menuItemIngles;
     private javax.swing.JMenuItem menuItemIniciarSesion;
-    private javax.swing.JMenuItem menuItemListar;
     private javax.swing.JMenuItem menuItemListarUs;
     private javax.swing.JMenuItem menuItemRegistar;
     private javax.swing.JMenuItem menuItemSalir;
+    private javax.swing.JMenuItem menuItemUsuario;
+    private javax.swing.JMenuItem menuItemtTelefono;
+    private javax.swing.JMenu menuMenu;
     // End of variables declaration//GEN-END:variables
 
 }

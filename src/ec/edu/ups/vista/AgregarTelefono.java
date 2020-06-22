@@ -6,7 +6,9 @@
 package ec.edu.ups.vista;
 
 import ec.edu.ups.controlador.ControladorUsuario;
+import ec.edu.ups.modelo.Telefono;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,21 +16,34 @@ import javax.swing.JOptionPane;
  */
 public class AgregarTelefono extends javax.swing.JInternalFrame {
 //    private TelefonoDAO telfDAO;
+
     private ControladorUsuario ctrlUsuario;
+
     /**
      * Creates new form AgregarTelefono
      */
     public AgregarTelefono(ControladorUsuario ctrlUsuario) {
-        initComponents();
-//        telfDAO = new TelefonoDAO();
         this.ctrlUsuario = ctrlUsuario;
+        initComponents();
+        //cargarTelefonoTablatelf();  
+//        telfDAO = new TelefonoDAO();
+
     }
-    
-    public void limpiar(){
+
+    public void limpiar() {
         formatedTXTNumero.setText("");
         cbxTipo.setSelectedIndex(0);
         cbxOperadora.setSelectedIndex(0);
     }
+
+    public void cargarTelefonoTablatelf() {
+        DefaultTableModel modelo = (DefaultTableModel) tablaTelefono.getModel();
+        for (Telefono telefono : ctrlUsuario.listarTelefono()) {
+            Object[] rowData = {telefono.getCodigo(), telefono.getNumero(), telefono.getTipo(), telefono.getOperadora()};
+            modelo.addRow(rowData);
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -91,17 +106,14 @@ public class AgregarTelefono extends javax.swing.JInternalFrame {
 
         tablaTelefono.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Codigo", "Numero", "Tipo", "Operadora"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
@@ -129,7 +141,11 @@ public class AgregarTelefono extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
+                .addGap(100, 100, 100)
+                .addComponent(btnAgregar)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(49, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,11 +166,7 @@ public class AgregarTelefono extends javax.swing.JInternalFrame {
                                 .addContainerGap())))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(btnAgregar)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(41, 41, 41))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,11 +187,11 @@ public class AgregarTelefono extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(cbxOperadora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addGap(32, 32, 32)
                 .addComponent(btnAgregar)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();
@@ -198,31 +210,32 @@ public class AgregarTelefono extends javax.swing.JInternalFrame {
                         new javax.swing.text.DefaultFormatterFactory(
                                 new javax.swing.text.MaskFormatter("(+593) ##-###-####")
                         ));
-            }else if(item.equals("Fax")){
+            } else if (item.equals("Fax")) {
                 formatedTXTNumero.setFormatterFactory(
                         new javax.swing.text.DefaultFormatterFactory(
                                 new javax.swing.text.MaskFormatter("(+593) ##-###-###")
                         ));
             }
-        }catch (java.text.ParseException ex){
+        } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
 
     }//GEN-LAST:event_cbxTipoActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        int contador = 0;
         int codigo = Integer.valueOf(txtcCodigo.getText());
         String numero = formatedTXTNumero.getText();
         String tipo = cbxTipo.getSelectedItem().toString();
         String operadora = cbxOperadora.getSelectedItem().toString();
         ctrlUsuario.agregarTelefono(codigo, numero, tipo, operadora);
-        if(cbxTipo.getSelectedItem().equals("**Seleccione un tipo**") || cbxOperadora.getSelectedItem().equals("**Seleccione una Operadora**")){
+        cargarTelefonoTablatelf();
+        if (cbxTipo.getSelectedItem().equals("**Seleccione un tipo**") || cbxOperadora.getSelectedItem().equals("**Seleccione una Operadora**")) {
             JOptionPane.showMessageDialog(this, "Falta campos por llenar");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Datos agregados correctamente");
             limpiar();
         }
-                
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

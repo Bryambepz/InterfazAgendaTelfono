@@ -11,6 +11,7 @@ import ec.edu.ups.dao.TelefonoDAO;
 import ec.edu.ups.dao.UsuarioDAO;
 import ec.edu.ups.modelo.Telefono;
 import ec.edu.ups.modelo.Usuario;
+import java.util.List;
 
 /**
  *
@@ -53,6 +54,10 @@ public class ControladorUsuario {
         daotelf.crearTelefono(telefono);
         usuario.agregarTelefono(telefono);
         daoUs.actualizarUsuario(usuario);
+    }
+    
+    public List<Telefono> listarTelefono(){
+        return usuario.getListaTelefonos();
     }
     
     public boolean comprobar(String contraseña, String correo){

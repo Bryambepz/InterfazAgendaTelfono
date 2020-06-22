@@ -80,7 +80,10 @@ public class Usuario {
     public void agregarTelefono(Telefono telefono){
         listaTelefonos.add(telefono);
     }
-    
+
+    public List<Telefono> getListaTelefonos() {
+        return listaTelefonos;
+    }
     
     @Override
     public int hashCode() {

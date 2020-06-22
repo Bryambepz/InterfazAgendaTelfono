@@ -29,7 +29,7 @@ public class ControladorTelefono {
         //this.telefono = telefono;
         telefono = new Telefono(codigo, numero, tipo, operadora);
         daotelf.crearTelefono(telefono);
-        codigo++;
+        //codigo++;
     }
     
     public void verTelefono(){
