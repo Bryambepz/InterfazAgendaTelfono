@@ -7,6 +7,9 @@ package ec.edu.ups.vista;
 
 import ec.edu.ups.controlador.ControladorUsuario;
 import ec.edu.ups.modelo.Telefono;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -15,17 +18,58 @@ import javax.swing.table.DefaultTableModel;
  * @author braya
  */
 public class AgregarTelefono extends javax.swing.JInternalFrame {
-
+    private VentanaPrincipal ventanaPrinc;
     private ControladorUsuario ctrlUsuario;
 
     /**
      * Creates new form AgregarTelefono
      */
-    public AgregarTelefono(ControladorUsuario ctrlUsuario) {
+    public AgregarTelefono(ControladorUsuario ctrlUsuario, VentanaPrincipal ventanaPrinc) {
         this.ctrlUsuario = ctrlUsuario;
         initComponents();
         iniciar();
     }
+
+    public JButton getBtnEditar() {
+        return btnEditar;
+    }
+
+    public JButton getBtnAgregar() {
+        return btnAgregar;
+    }
+
+    public JButton getBtnCancelar() {
+        return btnCancelar;
+    }
+
+    public JButton getBtnEliminar() {
+        return btnEliminar;
+    }
+
+    public JComboBox<String> getCbxOperadora() {
+        return cbxOperadora;
+    }
+
+    public JComboBox<String> getCbxTipo() {
+        return cbxTipo;
+    }
+
+    public JLabel getCodigoLabel() {
+        return codigoLabel;
+    }
+
+    public JLabel getNumerojLabel2() {
+        return numerojLabel2;
+    }
+
+    public JLabel getOperadorajLabel4() {
+        return operadorajLabel4;
+    }
+
+    public JLabel getTipojLabel3() {
+        return tipojLabel3;
+    }
+
     
     public void limpiar() {
         txtcCodigo.setText("");
@@ -74,10 +118,10 @@ public class AgregarTelefono extends javax.swing.JInternalFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        codigoLabel = new javax.swing.JLabel();
+        numerojLabel2 = new javax.swing.JLabel();
+        tipojLabel3 = new javax.swing.JLabel();
+        operadorajLabel4 = new javax.swing.JLabel();
         txtcCodigo = new javax.swing.JTextField();
         cbxTipo = new javax.swing.JComboBox<>();
         cbxOperadora = new javax.swing.JComboBox<>();
@@ -121,13 +165,13 @@ public class AgregarTelefono extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setText("Codigo");
+        codigoLabel.setText("Codigo");
 
-        jLabel2.setText("Numero");
+        numerojLabel2.setText("Numero");
 
-        jLabel3.setText("Tipo");
+        tipojLabel3.setText("Tipo");
 
-        jLabel4.setText("Operadora");
+        operadorajLabel4.setText("Operadora");
 
         txtcCodigo.setEditable(false);
         txtcCodigo.setBackground(new java.awt.Color(204, 204, 204));
@@ -210,10 +254,10 @@ public class AgregarTelefono extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4))
+                            .addComponent(tipojLabel3)
+                            .addComponent(codigoLabel)
+                            .addComponent(numerojLabel2)
+                            .addComponent(operadorajLabel4))
                         .addGap(108, 108, 108)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -246,18 +290,18 @@ public class AgregarTelefono extends javax.swing.JInternalFrame {
                 .addGap(65, 65, 65)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtcCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(codigoLabel))
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cbxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(tipojLabel3))
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
+                    .addComponent(numerojLabel2)
                     .addComponent(formatedTXTNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
+                    .addComponent(operadorajLabel4)
                     .addComponent(cbxOperadora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -377,15 +421,15 @@ public class AgregarTelefono extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JComboBox<String> cbxOperadora;
     private javax.swing.JComboBox<String> cbxTipo;
+    private javax.swing.JLabel codigoLabel;
     private javax.swing.JFormattedTextField formatedTXTNumero;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel numerojLabel2;
+    private javax.swing.JLabel operadorajLabel4;
     private javax.swing.JTable tablaTelefono;
+    private javax.swing.JLabel tipojLabel3;
     private javax.swing.JTextField txtcCodigo;
     // End of variables declaration//GEN-END:variables
 }

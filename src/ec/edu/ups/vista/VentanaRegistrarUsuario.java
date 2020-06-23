@@ -7,6 +7,8 @@ package ec.edu.ups.vista;
 
 import ec.edu.ups.controlador.ControladorUsuario;
 import ec.edu.ups.modelo.Usuario;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,13 +17,41 @@ import javax.swing.JOptionPane;
  */
 public class VentanaRegistrarUsuario extends javax.swing.JInternalFrame {
     private ControladorUsuario ctrlUsuario;
+    private VentanaPrincipal ventanap;
     /**
      * Creates new form VentanaRegistrarUsuario
      */
-    public VentanaRegistrarUsuario(ControladorUsuario ctrUsuario) {
+    public VentanaRegistrarUsuario(ControladorUsuario ctrUsuario, VentanaPrincipal ventanap) {
         initComponents();
         this.ctrlUsuario = ctrUsuario;
+        //ventanap = new VentanaPrincipal();
     }
+
+    public JLabel getApellidoL() {
+        return apellidoL;
+    }
+
+    public JButton getBtnRegistrar() {
+        return btnRegistrar;
+    }
+
+    public JLabel getCedulaL() {
+        return cedulaL;
+    }
+
+    public JLabel getContraseñaL() {
+        return contraseñaL;
+    }
+
+    public JLabel getCorreoL() {
+        return correoL;
+    }
+
+    public JLabel getNombreL() {
+        return nombreL;
+    }
+    
+    
     
     public void limpiar(){
         txtCedula.setText("");
@@ -39,11 +69,11 @@ public class VentanaRegistrarUsuario extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        cedulaL = new javax.swing.JLabel();
+        apellidoL = new javax.swing.JLabel();
+        nombreL = new javax.swing.JLabel();
+        correoL = new javax.swing.JLabel();
+        contraseñaL = new javax.swing.JLabel();
         btnRegistrar = new javax.swing.JButton();
         txtCedula = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
@@ -53,15 +83,15 @@ public class VentanaRegistrarUsuario extends javax.swing.JInternalFrame {
 
         setClosable(true);
 
-        jLabel1.setText("Cedula");
+        cedulaL.setText("Cedula");
 
-        jLabel2.setText("Apellido");
+        apellidoL.setText("Apellido");
 
-        jLabel3.setText("Nombre");
+        nombreL.setText("Nombre");
 
-        jLabel4.setText("Correo");
+        correoL.setText("Correo");
 
-        jLabel5.setText("Contraseña");
+        contraseñaL.setText("Contraseña");
 
         btnRegistrar.setText("Registrar");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
@@ -79,12 +109,12 @@ public class VentanaRegistrarUsuario extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(54, 54, 54)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
+                            .addComponent(apellidoL)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel1)
-                                        .addComponent(jLabel3))
+                                        .addComponent(cedulaL)
+                                        .addComponent(nombreL))
                                     .addGap(120, 120, 120)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -92,8 +122,8 @@ public class VentanaRegistrarUsuario extends javax.swing.JInternalFrame {
                                         .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel4)
-                                        .addComponent(jLabel5))
+                                        .addComponent(correoL)
+                                        .addComponent(contraseñaL))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(txtCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
@@ -108,23 +138,23 @@ public class VentanaRegistrarUsuario extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(73, 73, 73)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(cedulaL)
                     .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
+                    .addComponent(nombreL)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
+                    .addComponent(apellidoL)
                     .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                        .addComponent(correoL)
                         .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
+                            .addComponent(contraseñaL)
                             .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(38, 38, 38)
                         .addComponent(btnRegistrar))
@@ -154,12 +184,12 @@ public class VentanaRegistrarUsuario extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel apellidoL;
     private javax.swing.JButton btnRegistrar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel cedulaL;
+    private javax.swing.JLabel contraseñaL;
+    private javax.swing.JLabel correoL;
+    private javax.swing.JLabel nombreL;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JPasswordField txtContraseña;

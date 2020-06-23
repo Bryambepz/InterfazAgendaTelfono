@@ -6,6 +6,8 @@
 package ec.edu.ups.vista;
 
 import ec.edu.ups.controlador.ControladorUsuario;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,9 +23,22 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
     public VentanaIniciarSesion(ControladorUsuario ctrlUsuario, VentanaPrincipal ventanaPrincipal) {
         initComponents();
         this.ctrlUsuario = ctrlUsuario;
-        this.ventanaPrincipal = ventanaPrincipal;
+        //this.ventanaPrincipal = ventanaPrincipal;
     }
 
+    public JButton getBtnInicarSesion() {
+        return btnInicarSesion;
+    }
+
+    public JLabel getIngreseContraseñaL() {
+        return ingreseContraseñaL;
+    }
+
+    public JLabel getIngreseCorreoL() {
+        return ingreseCorreoL;
+    }
+
+    
     public void limpiar(){
         txtCorreo.setText("");
         txtContraseña.setText("");
@@ -37,17 +52,17 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        ingreseCorreoL = new javax.swing.JLabel();
+        ingreseContraseñaL = new javax.swing.JLabel();
         txtCorreo = new javax.swing.JTextField();
         txtContraseña = new javax.swing.JPasswordField();
         btnInicarSesion = new javax.swing.JButton();
 
         setClosable(true);
 
-        jLabel1.setText("Ingrese Correo");
+        ingreseCorreoL.setText("Ingrese Correo");
 
-        jLabel2.setText("Ingrese Contraseña");
+        ingreseContraseñaL.setText("Ingrese Contraseña");
 
         btnInicarSesion.setText("Iniciar Sesion");
         btnInicarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -63,8 +78,8 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(81, 81, 81)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(ingreseCorreoL)
+                    .addComponent(ingreseContraseñaL))
                 .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtCorreo)
@@ -80,11 +95,11 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(ingreseCorreoL)
                     .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(ingreseContraseñaL)
                     .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(58, 58, 58)
                 .addComponent(btnInicarSesion)
@@ -118,8 +133,8 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInicarSesion;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel ingreseContraseñaL;
+    private javax.swing.JLabel ingreseCorreoL;
     private javax.swing.JPasswordField txtContraseña;
     private javax.swing.JTextField txtCorreo;
     // End of variables declaration//GEN-END:variables
