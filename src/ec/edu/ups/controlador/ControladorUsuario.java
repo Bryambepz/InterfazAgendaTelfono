@@ -54,9 +54,18 @@ public class ControladorUsuario {
         daoUs.actualizarUsuario(usuario);
     }
     
-    public void eliminarUsuario(){
-        
+    public Usuario buscarUsuario(String cedula){
+        usuario = daoUs.leerUsuarios(cedula);
+        if(usuario == null){
+            return null;
+        }else{
+            return usuario;
+        }
     }
+    
+//    public void eliminarUsuario(){
+//        
+//    }
     
     //Agregacion
     public void agregarTelefono(String numero, String tipo, String operadora){

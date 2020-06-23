@@ -19,10 +19,13 @@ import javax.swing.JMenuItem;
  * @author braya
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
+    //ventanas
     private VentanaIniciarSesion ventanaIniciar;
     private VentanaRegistrarUsuario ventanaRegistrar;
     private AgregarTelefono agregarTelefono;
     private EditarUsuario editarUsuario;
+    private TelefonosporUsuario telefonoPorUsuario;
+    //mvc
     private UsuarioDAO usuarioDAO;
     private TelefonoDAO telefonoDAO;
     private ControladorUsuario ctrlUsuario;
@@ -48,6 +51,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ventanaRegistrar = new VentanaRegistrarUsuario(ctrlUsuario);
         agregarTelefono = new AgregarTelefono(ctrlUsuario);
         editarUsuario = new EditarUsuario(ctrlUsuario);
+        telefonoPorUsuario = new TelefonosporUsuario(ctrlUsuario);
         //localizacion
         localizacion = Locale.getDefault();
 //        localizacion = new Locale("en", "UK");
@@ -141,6 +145,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         menuItemListarUs.setMnemonic('a');
         menuItemListarUs.setText("Listar telefonos del usuario");
+        menuItemListarUs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemListarUsActionPerformed(evt);
+            }
+        });
         menuMenu.add(menuItemListarUs);
 
         menuItemCerrar.setText("Cerrar Sesion");
@@ -262,6 +271,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         desktopPane.add(editarUsuario);
         editarUsuario.setVisible(true);
     }//GEN-LAST:event_menuItemUsuarioActionPerformed
+
+    private void menuItemListarUsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarUsActionPerformed
+        // TODO add your handling code here:
+        desktopPane.add(telefonoPorUsuario);
+        telefonoPorUsuario.setVisible(true);
+    }//GEN-LAST:event_menuItemListarUsActionPerformed
 
     /**
      * @param args the command line arguments

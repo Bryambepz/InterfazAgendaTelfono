@@ -101,6 +101,15 @@ public class Usuario {
         }
     }
     
+    public Telefono buscarTelefono(Telefono telefono){
+        if(listaTelefonos.contains(telefono)){
+            int index = listaTelefonos.indexOf(telefono);
+            return listaTelefonos.get(index);
+        }else{
+            return null;
+        }
+    }   
+    
     public List<Telefono> getListaTelefonos() {
         return listaTelefonos;
     }
