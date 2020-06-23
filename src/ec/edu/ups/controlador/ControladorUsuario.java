@@ -96,6 +96,10 @@ public class ControladorUsuario {
         return usuario.getListaTelefonos();
     }
     
+    public List<Telefono> listarTodosTelefonos(){
+        return daotelf.findAll();
+    }
+    
     public int codigoTelefono(){
         int cont = daotelf.codigoTelefono();
         return cont++;

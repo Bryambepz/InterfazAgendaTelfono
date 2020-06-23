@@ -110,6 +110,10 @@ public class Usuario {
         }
     }   
     
+    public List<Telefono> listar(){
+        return listaTelefonos;
+    }
+    
     public List<Telefono> getListaTelefonos() {
         return listaTelefonos;
     }

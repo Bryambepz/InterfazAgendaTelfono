@@ -30,9 +30,21 @@ public class TelefonosporUsuario extends javax.swing.JInternalFrame {
     }
     
     public void tablaTelefonos( List<Telefono> telefonosUs){
-//        DefaultTableModel modelo = 
+        DefaultTableModel modelo = (DefaultTableModel) tablaTelefonosUsuario.getModel();
+        modelo.setRowCount(0);
+        for (Telefono telefono : telefonosUs) {
+            Object[] telf = {telefono.getCodigo(), telefono.getNumero(), telefono.getTipo(), telefono.getOperadora()};
+            modelo.addRow(telf);
+        }
+        tablaTelefonosUsuario.setModel(modelo);
     }
-
+    
+    public void limpiar(){
+        txtCedulaB.setText("");
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtCorreo.setText("");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -55,7 +67,8 @@ public class TelefonosporUsuario extends javax.swing.JInternalFrame {
         btnBuscar = new javax.swing.JButton();
         btnListar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tablaTelefonosUsuario = new javax.swing.JTable();
+        btnAtras = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -75,6 +88,7 @@ public class TelefonosporUsuario extends javax.swing.JInternalFrame {
         jLabel1.setText("Ingrese cedula");
 
         txtNombre.setEditable(false);
+        txtNombre.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel2.setText("Nombre");
 
@@ -83,8 +97,10 @@ public class TelefonosporUsuario extends javax.swing.JInternalFrame {
         jLabel4.setText("Correo");
 
         txtCorreo.setEditable(false);
+        txtCorreo.setBackground(new java.awt.Color(204, 204, 204));
 
         txtApellido.setEditable(false);
+        txtApellido.setBackground(new java.awt.Color(204, 204, 204));
 
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -94,8 +110,13 @@ public class TelefonosporUsuario extends javax.swing.JInternalFrame {
         });
 
         btnListar.setText("Listar");
+        btnListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarActionPerformed(evt);
+            }
+        });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tablaTelefonosUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -118,7 +139,14 @@ public class TelefonosporUsuario extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tablaTelefonosUsuario);
+
+        btnAtras.setText("Atras");
+        btnAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,20 +155,26 @@ public class TelefonosporUsuario extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(127, 127, 127)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4)
-                    .addComponent(btnBuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtCorreo)
-                        .addComponent(txtNombre)
-                        .addComponent(txtApellido)
-                        .addComponent(txtCedulaB, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
-                    .addComponent(btnListar))
-                .addGap(84, 84, 84))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtCorreo)
+                            .addComponent(txtNombre)
+                            .addComponent(txtApellido)
+                            .addComponent(txtCedulaB, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
+                        .addGap(84, 84, 84))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnBuscar)
+                        .addGap(85, 85, 85)
+                        .addComponent(btnListar)
+                        .addGap(74, 74, 74)
+                        .addComponent(btnAtras)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -168,7 +202,8 @@ public class TelefonosporUsuario extends javax.swing.JInternalFrame {
                 .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscar)
-                    .addComponent(btnListar))
+                    .addComponent(btnListar)
+                    .addComponent(btnAtras))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
@@ -180,27 +215,59 @@ public class TelefonosporUsuario extends javax.swing.JInternalFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
         String cedula = (String) txtCedulaB.getText();
-        //if(cedula == null){
-          //  JOptionPane.showMessageDialog(this, "Ingrese cedula para buscar usuario");
-        //}else{
+        
+        if(cedula == null){
+            JOptionPane.showMessageDialog(this, "Ingrese cedula para buscar usuario");
+        }else{
             Usuario usuario = ctrlUsuario.buscarUsuario(cedula);
-            txtNombre.setText(usuario.getNombre());
-            txtApellido.setText(usuario.getApellido());
-            txtCorreo.setText(usuario.getCorreo());
-                    
-//            telefonosUs = usuario.getListaTelefonos();
-//            if(telefonosUs.isEmpty()){
-//                JOptionPane.showMessageDialog(this, "Este usuario no tiene telefonos");
-//            }else{
-//               
-//            }
+            if(usuario != null){
+                txtNombre.setText(usuario.getNombre());
+                txtApellido.setText(usuario.getApellido());
+                txtCorreo.setText(usuario.getCorreo());
+
+                telefonosUs = usuario.getListaTelefonos();
+                if (telefonosUs.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Este usuario no tiene telefonos");
+                } else {
+                    telefonosUs = usuario.getListaTelefonos();
+                    if (telefonosUs.isEmpty()) {
+                        JOptionPane.showMessageDialog(this, "Este usuario no tiene telefonos");
+                    } else {
+                        tablaTelefonos(telefonosUs);
+                    }
+                }
+            }else{
+                JOptionPane.showMessageDialog(this, "Usuario no encontrado");
+            }
             
-        //}
+        }
         
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+        // TODO add your handling code here:
+        limpiar();
+        
+        List<Telefono> telefonos = ctrlUsuario.listarTodosTelefonos();
+        DefaultTableModel modelo = (DefaultTableModel) tablaTelefonosUsuario.getModel();
+        modelo.setRowCount(0);
+        
+        for (int i = 0; i < telefonos.size(); i++) {
+            Telefono telf = telefonos.get(i);
+            Object[] rowData = {telf.getCodigo(), telf.getNumero(), telf.getTipo(), telf.getOperadora()};
+            modelo.addRow(rowData);
+        }
+        tablaTelefonosUsuario.setModel(modelo);
+    }//GEN-LAST:event_btnListarActionPerformed
+
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+        limpiar();
+        this.dispose();
+    }//GEN-LAST:event_btnAtrasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnListar;
     private javax.swing.JLabel jLabel1;
@@ -210,7 +277,7 @@ public class TelefonosporUsuario extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable tablaTelefonosUsuario;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtCedulaB;
     private javax.swing.JTextField txtCorreo;
