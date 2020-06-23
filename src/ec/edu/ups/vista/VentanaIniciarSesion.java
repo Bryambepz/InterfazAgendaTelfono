@@ -23,6 +23,7 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
     public VentanaIniciarSesion(ControladorUsuario ctrlUsuario, VentanaPrincipal ventanaPrincipal) {
         initComponents();
         this.ctrlUsuario = ctrlUsuario;
+        this.ventanaPrincipal = ventanaPrincipal;
         //this.ventanaPrincipal = ventanaPrincipal;
     }
 

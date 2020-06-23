@@ -73,6 +73,7 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
         txtContraseña = new javax.swing.JPasswordField();
         btnActualizat = new javax.swing.JButton();
 
+        setClosable(true);
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
                 formInternalFrameActivated(evt);
