@@ -50,8 +50,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ventanaIniciar = new VentanaIniciarSesion(ctrlUsuario,this);
         ventanaRegistrar = new VentanaRegistrarUsuario(ctrlUsuario, this);
         agregarTelefono = new AgregarTelefono(ctrlUsuario,this);
-        editarUsuario = new EditarUsuario(ctrlUsuario);
-        telefonoPorUsuario = new TelefonosporUsuario(ctrlUsuario);
+        editarUsuario = new EditarUsuario(ctrlUsuario, this);
+        telefonoPorUsuario = new TelefonosporUsuario(ctrlUsuario, this);
         //localizacion
         localizacion = Locale.getDefault();
 //        localizacion = new Locale("en", "UK");
@@ -73,7 +73,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 ventanaRegistrar.getContraseñaL().setText(mensajes.getString("contraseñaL"));
                 ventanaRegistrar.getBtnRegistrar().setText(mensajes.getString("btnRegistrar"));
             menuItemListarUs.setText(mensajes.getString("menuItemListarUs"));
-                
+                telefonoPorUsuario.getCedulaLabel().setText(mensajes.getString("cedula"));
+                telefonoPorUsuario.getNombreLabel().setText(mensajes.getString("nombre"));
+                telefonoPorUsuario.getApellidoLabel().setText(mensajes.getString("Apellido"));
+                telefonoPorUsuario.getCorreoLabel().setText(mensajes.getString("Correo"));
+                telefonoPorUsuario.getBtnBuscar().setText(mensajes.getString("botonBuscar"));
+                telefonoPorUsuario.getBtnListar().setText(mensajes.getString("botonListar"));
+                telefonoPorUsuario.getBtnAtras().setText(mensajes.getString("botonAtras"));
             menuItemCerrar.setText(mensajes.getString("menuItemCerrar"));
             menuItemSalir.setText(mensajes.getString("menuItemSalir"));
         menuGestionar.setText(mensajes.getString("menuGestionar"));
@@ -87,7 +93,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 agregarTelefono.getBtnCancelar().setText(mensajes.getString("btnCancelar"));
                 agregarTelefono.getBtnEditar().setText(mensajes.getString("btnEditar"));
             menuItemUsuario.setText(mensajes.getString("menuItemUsuario"));
-                
+                editarUsuario.getNombreLabel().setText(mensajes.getString("nombre"));
+                editarUsuario.getCedulaLabel().setText(mensajes.getString("cedula"));
+                editarUsuario.getApellidoLabel().setText(mensajes.getString("apellido"));
+                editarUsuario.getCorreoLabel().setText(mensajes.getString("correo"));
+                editarUsuario.getContraseñaLabel().setText(mensajes.getString("contraseña"));
+                editarUsuario.getBtnActualizat().setText(mensajes.getString("botonActualizar"));
         menuIdioma.setText(mensajes.getString("menuIdioma"));
             menuItemEspañol.setText(mensajes.getString("menuItemEspañol"));
             menuItemIngles.setText(mensajes.getString("menuItemIngles"));

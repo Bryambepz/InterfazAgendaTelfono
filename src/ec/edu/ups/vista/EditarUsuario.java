@@ -7,6 +7,8 @@ package ec.edu.ups.vista;
 
 import ec.edu.ups.controlador.ControladorUsuario;
 import ec.edu.ups.modelo.Usuario;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.DesktopPaneUI;
 
@@ -16,12 +18,37 @@ import javax.swing.plaf.DesktopPaneUI;
  */
 public class EditarUsuario extends javax.swing.JInternalFrame {
     private ControladorUsuario ctrlUsuario;
+    private VentanaPrincipal ventanaPrin;
     /**
      * Creates new form EditarUsuario
      */
-    public EditarUsuario(ControladorUsuario ctrlUsuario) {
+    public EditarUsuario(ControladorUsuario ctrlUsuario, VentanaPrincipal ventanaPrin) {
         initComponents();
         this.ctrlUsuario = ctrlUsuario;
+    }
+
+    public JLabel getApellidoLabel() {
+        return apellidoLabel;
+    }
+
+    public JButton getBtnActualizat() {
+        return btnActualizat;
+    }
+
+    public JLabel getCedulaLabel() {
+        return cedulaLabel;
+    }
+
+    public JLabel getContraseñaLabel() {
+        return contraseñaLabel;
+    }
+
+    public JLabel getCorreoLabel() {
+        return correoLabel;
+    }
+
+    public JLabel getNombreLabel() {
+        return nombreLabel;
     }
 
     
@@ -34,11 +61,11 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        cedulaLabel = new javax.swing.JLabel();
+        nombreLabel = new javax.swing.JLabel();
+        apellidoLabel = new javax.swing.JLabel();
+        correoLabel = new javax.swing.JLabel();
+        contraseñaLabel = new javax.swing.JLabel();
         txtCedula = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
         txtApellido = new javax.swing.JTextField();
@@ -64,15 +91,15 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setText("Ingrese Cedula nueva");
+        cedulaLabel.setText("Ingrese Cedula nueva");
 
-        jLabel2.setText("Ingrese nombre usuario");
+        nombreLabel.setText("Ingrese nombre usuario");
 
-        jLabel3.setText("Ingrese apellido usuario");
+        apellidoLabel.setText("Ingrese apellido usuario");
 
-        jLabel4.setText("Ingrese correo");
+        correoLabel.setText("Ingrese correo");
 
-        jLabel5.setText("Ingrese contraseña");
+        contraseñaLabel.setText("Ingrese contraseña");
 
         txtCedula.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -118,11 +145,11 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(107, 107, 107)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2))
+                    .addComponent(cedulaLabel)
+                    .addComponent(contraseñaLabel)
+                    .addComponent(correoLabel)
+                    .addComponent(apellidoLabel)
+                    .addComponent(nombreLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtCedula)
@@ -141,23 +168,23 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(cedulaLabel)
                     .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
+                    .addComponent(nombreLabel)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
+                    .addComponent(apellidoLabel)
                     .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
+                    .addComponent(correoLabel)
                     .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
+                    .addComponent(contraseñaLabel)
                     .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48)
                 .addComponent(btnActualizat)
@@ -229,12 +256,12 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
     }   
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel apellidoLabel;
     private javax.swing.JButton btnActualizat;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel cedulaLabel;
+    private javax.swing.JLabel contraseñaLabel;
+    private javax.swing.JLabel correoLabel;
+    private javax.swing.JLabel nombreLabel;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JPasswordField txtContraseña;

@@ -10,6 +10,8 @@ import ec.edu.ups.modelo.Telefono;
 import ec.edu.ups.modelo.Usuario;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -18,15 +20,44 @@ import javax.swing.table.DefaultTableModel;
  * @author braya
  */
 public class TelefonosporUsuario extends javax.swing.JInternalFrame {
+    private VentanaPrincipal ventanaPrin;
     private ControladorUsuario ctrlUsuario;
     private List<Telefono> telefonosUs;
     /**
      * Creates new form TelefonosporUsuario
      */
-    public TelefonosporUsuario(ControladorUsuario ctrlUsuario) {
+    public TelefonosporUsuario(ControladorUsuario ctrlUsuario, VentanaPrincipal ventanaPrin) {
         initComponents();
         this.ctrlUsuario = ctrlUsuario;
         telefonosUs = new ArrayList<>();
+    }
+
+    public JLabel getApellidoLabel() {
+        return apellidoLabel;
+    }
+
+    public JButton getBtnAtras() {
+        return btnAtras;
+    }
+
+    public JButton getBtnBuscar() {
+        return btnBuscar;
+    }
+
+    public JButton getBtnListar() {
+        return btnListar;
+    }
+
+    public JLabel getCedulaLabel() {
+        return cedulaLabel;
+    }
+
+    public JLabel getCorreoLabel() {
+        return correoLabel;
+    }
+
+    public JLabel getNombreLabel() {
+        return nombreLabel;
     }
     
     public void tablaTelefonos( List<Telefono> telefonosUs){
@@ -56,12 +87,12 @@ public class TelefonosporUsuario extends javax.swing.JInternalFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        cedulaLabel = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        nombreLabel = new javax.swing.JLabel();
         txtCedulaB = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        apellidoLabel = new javax.swing.JLabel();
+        correoLabel = new javax.swing.JLabel();
         txtCorreo = new javax.swing.JTextField();
         txtApellido = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
@@ -85,16 +116,16 @@ public class TelefonosporUsuario extends javax.swing.JInternalFrame {
 
         setClosable(true);
 
-        jLabel1.setText("Ingrese cedula");
+        cedulaLabel.setText("Ingrese cedula");
 
         txtNombre.setEditable(false);
         txtNombre.setBackground(new java.awt.Color(204, 204, 204));
 
-        jLabel2.setText("Nombre");
+        nombreLabel.setText("Nombre");
 
-        jLabel3.setText("Apellido");
+        apellidoLabel.setText("Apellido");
 
-        jLabel4.setText("Correo");
+        correoLabel.setText("Correo");
 
         txtCorreo.setEditable(false);
         txtCorreo.setBackground(new java.awt.Color(204, 204, 204));
@@ -157,10 +188,10 @@ public class TelefonosporUsuario extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4))
+                            .addComponent(cedulaLabel)
+                            .addComponent(apellidoLabel)
+                            .addComponent(nombreLabel)
+                            .addComponent(correoLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtCorreo)
@@ -170,9 +201,9 @@ public class TelefonosporUsuario extends javax.swing.JInternalFrame {
                         .addGap(84, 84, 84))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnBuscar)
-                        .addGap(85, 85, 85)
+                        .addGap(91, 91, 91)
                         .addComponent(btnListar)
-                        .addGap(74, 74, 74)
+                        .addGap(68, 68, 68)
                         .addComponent(btnAtras)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
@@ -185,19 +216,19 @@ public class TelefonosporUsuario extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(cedulaLabel)
                     .addComponent(txtCedulaB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
+                    .addComponent(nombreLabel)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
+                    .addComponent(apellidoLabel)
                     .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
+                    .addComponent(correoLabel)
                     .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -267,16 +298,16 @@ public class TelefonosporUsuario extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel apellidoLabel;
     private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnListar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel cedulaLabel;
+    private javax.swing.JLabel correoLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel nombreLabel;
     private javax.swing.JTable tablaTelefonosUsuario;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtCedulaB;
